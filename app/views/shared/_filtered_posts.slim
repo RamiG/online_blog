@@ -1,0 +1,9 @@
+- unless @posts.nil?
+  h1 Posts by #{@filter}
+
+  div class="span8"
+    ol class="posts"
+      = render @posts
+    = will_paginate @posts unless @posts.empty?     
+- else
+  h1 No posts found

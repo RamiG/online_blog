@@ -3,9 +3,11 @@ OnlineBlog::Application.routes.draw do
   #devise_for :users, path: "auth", path_names: { sign_in: "login", sign_out: "logout", sign_up: "register" }
   resources :users, only: [:show]
   resources :posts
+  get 'categorized' => 'posts#categorized', via: :get    
+  get 'tagged' => 'posts#tagged', via: :get      
   resources :comments, only: [:create, :destroy]
   root 'static_pages#home'
-  get "about" => 'static_pages#about'
+  get "about" => 'static_pages#about'  
   #get "static_pages/about"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

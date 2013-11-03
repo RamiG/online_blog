@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :destroy, :create, :edit, :update]
   before_action :define_user
-
+ 
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -42,6 +42,26 @@ class PostsController < ApplicationController
     end    
   end
 
+
+  def categorized
+    if params[:category].present?
+      #@posts = Post.find_by_category_id(params[:category]).paginate(page: params[:page], per_page: 5)
+      @posts = Post.all.where("category_id = #{params[:category].to_i}").paginate(page: params[:page], per_page: 5)
+    else      
+      @posts = nil
+    end
+    @filter = "category: " + Category.find(params[:category]).name
+  end
+
+  def tagged
+    if params[:tag].present?
+      @posts = Post.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 5)
+    else      
+      @posts = nil
+    end
+    @filter = "tag: " + params[:tag]
+  end
+
   private
   
     def define_user
@@ -49,7 +69,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :tag_list)
+      params.require(:post).permit(:title, :content, :category_id, :tag_list)
     end
 
 end
