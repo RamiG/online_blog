@@ -1,4 +1,7 @@
 OnlineBlog::Application.routes.draw do
+  devise_for :users
+  #devise_for :users, path: "auth", path_names: { sign_in: "login", sign_out: "logout", sign_up: "register" }
+  resources :users, only: [:show]
   root 'static_pages#home'
   get "about" => 'static_pages#about'
   #get "static_pages/about"
