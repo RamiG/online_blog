@@ -1,0 +1,5 @@
+- unless @posts.empty? 
+  div class="span8"
+    ol class="posts"
+      = render @posts
+    = will_paginate @posts     

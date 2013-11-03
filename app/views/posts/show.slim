@@ -1,0 +1,40 @@
+div class="row"
+  aside class="span4"
+    - if user_signed_in?
+      section
+        = render 'shared/user_info' 
+
+    section         
+      h3
+        = link_to(@post.title, @post, class: "title") 
+
+      p class="post-content"
+        #{@post.content}
+      aside
+        div class="align-right"
+          - if current_user == @post.user
+            = link_to("edit", edit_post_path(@post.id), class: "post-sublinks") + " | "
+            = link_to "delete", @post, method: :delete, 
+              data: { confirm: "Are you sure?" }, title: @post.title, class: "post-sublinks"          
+        div class="align-left tags"
+          /- @post.tags.any?
+            /= "Tags: "
+            /- @post.tags.each do |tag|
+              /= link_to(tag.name, tagged_path(tag: tag.name), class: "post-sublinks") + " "
+    
+
+    div class="row"
+      aside class="comments"
+        /p Comments
+        = render partial: "comment", collection: @post.comments
+
+      - if user_signed_in?
+        div class="new-comment"
+          = form_for @comment do |f|        
+            = f.hidden_field :post_id
+            = f.hidden_field :user_id         
+            p
+              /= f.label :comment_text
+              = f.text_area :comment_text
+            p
+              = f.submit "Add comment"

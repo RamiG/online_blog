@@ -1,0 +1,29 @@
+= form_for(@post) do |f|
+  = render 'shared/error_messages', object: f.object
+  
+  div class="post_content"
+    = f.label :title
+    = f.text_field :title, id: "title_field"
+
+    = f.label :content
+    = f.text_area :content, placeholder: "Enter your post...", id: "content_field"
+
+    = f.label :tags
+    = f.text_field :tag_list
+
+    = f.submit "Post", class:"btn btn-large btn-primary", id: "submit_button", 
+      disabled: (@post.id == nil)
+    - if request.env['PATH_INFO'] == edit_post_path(@post)
+      = f.button "Cancel", class:"btn btn-large"      
+
+javascript:
+  $('#title_field, #content_field').keyup(function(){
+    if ($('#content_field').val() != "" && $('#title_field').val() != "") 
+    {     
+      $('#submit_button').attr('disabled', false);      
+    }
+    else
+    {
+      $('#submit_button').attr('disabled', true);         
+    }
+  });

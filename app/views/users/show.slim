@@ -1,3 +1,10 @@
 - provide(:title, @user.name)
-= gravatar_image @user
-= @user.name
+div class="row"
+  aside class="span4"
+    section
+      = render 'shared/user_info'      
+
+div class="span8"
+  h3 Posts (#{@user.posts.count})
+  = render 'shared/feed'
+      

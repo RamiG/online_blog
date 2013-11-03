@@ -1,0 +1,10 @@
+= link_to gravatar_image(@user, size: 64), @user
+h2
+  #{@user.name}
+span
+  = link_to "view profile", @user, class: "post-sublinks"
+span class="post-sublinks"
+  = pluralize(@user.posts.count, "post")
+p
+- if user_signed_in? and current_user == @user
+  = button_to "Add post", new_post_path, class: "btn btn-large btn-primary", method: :get   

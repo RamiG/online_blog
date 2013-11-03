@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_create :send_signup_notification
+  has_many :posts, dependent: :destroy 
+  has_many :comments, dependent: :destroy 
 
   def admin?
     self == User.first

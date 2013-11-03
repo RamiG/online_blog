@@ -1,5 +1,8 @@
 - provide(:title, 'Home')
-h1 Online Blog
-#content
-  p This is the home page
-    for the test blog application.
+- if user_signed_in?
+  div class="row"
+    aside class="span4"
+      section
+        = render 'shared/user_info'
+  div
+    = render 'shared/feed'
