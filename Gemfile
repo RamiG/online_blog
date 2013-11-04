@@ -10,12 +10,18 @@ gem 'pg', '~> 0.17.0'
 gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.1'
 gem 'slim', '~> 2.0.2'
+gem 'sunspot_rails', '~> 2.1.0'
+gem 'sunspot_test', '~> 0.4.0'
 gem 'turbolinks', '~> 1.3.0'
 gem 'uglifier', '~> 2.3.0'
 gem 'will_paginate', '~> 3.0.5'
 
 group :doc do
   gem 'sdoc', '~> 0.3.20', require: false
+end
+
+group :development do
+  gem 'sunspot_solr', '~> 2.1.0'
 end
 
 group :development, :test do

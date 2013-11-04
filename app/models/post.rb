@@ -6,4 +6,10 @@ class Post < ActiveRecord::Base
   validates :title, presence: true  
   validates :content, presence: true
   validates :user, presence: true
+  searchable do
+    text :title
+    text :content, stored: true
+
+    time :created_at
+  end
 end
