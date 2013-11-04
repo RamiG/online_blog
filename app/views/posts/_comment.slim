@@ -1,7 +1,7 @@
 section class="comment"
-  h5 #{comment.user.email}  commented #{time_ago_in_words(comment.created_at)} ago:
+  h5 #{comment.user.nil? ? "Visitor" : comment.user.name}  commented #{time_ago_in_words(comment.created_at)} ago:
   
   h6
     = comment.comment_text + " " 
     = link_to "delete", comment, method: :delete, 
-        data: { confirm: "Are you sure?" }, class: "post-sublinks" if current_user == comment.user
+        data: { confirm: "Are you sure?" }, class: "post-sublinks" if (current_user == comment.user && user_signed_in?) ||current_user.admin? 

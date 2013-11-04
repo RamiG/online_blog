@@ -42,5 +42,10 @@ div class="row"
           p
             /= f.label :comment_text
             = f.text_area :comment_text
+
+          - unless user_signed_in?  
+            p
+              = raw recaptcha_tags              
+
           p
             = f.submit "Add comment"

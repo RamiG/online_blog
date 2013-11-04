@@ -21,7 +21,7 @@ describe Comment do
 
   describe "when user is not assigned" do
     before { @comment.user_id = nil }
-    it { should_not be_valid }
+    it { should be_valid }
   end
 
   describe "when post is not assigned" do

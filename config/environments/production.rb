@@ -1,4 +1,7 @@
 OnlineBlog::Application.configure do
+
+  RECAPTCHA_PUBLIC_KEY= '6LcrtOkSAAAAALuiNBPw8LXIIBpdEMhkR1EexAtd'
+  RECAPTCHA_PRIVATE_KEY= '6LcrtOkSAAAAAGtIAlzQrurIdmyWkj-0dxtjrzmA'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

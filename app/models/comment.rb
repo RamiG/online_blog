@@ -4,5 +4,4 @@ class Comment < ActiveRecord::Base
 
   validates :comment_text, presence: true, length: { maximum: 512 }
   validates :post_id, presence: true
-  validates :user_id, presence: true
 end
