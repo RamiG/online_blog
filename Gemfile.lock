@@ -27,6 +27,9 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (2.4.1)
       rails (>= 3, < 5)
+    anjlab-bootstrap-rails (3.0.0.3)
+      railties (>= 3.0)
+      sass (>= 3.2)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -190,6 +193,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.4.1)
+  anjlab-bootstrap-rails (~> 3.0.0.3)
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.1)
   cucumber-rails (~> 1.4.0)

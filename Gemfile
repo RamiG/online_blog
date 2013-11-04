@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'acts-as-taggable-on', '~> 2.4.1'
+gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'devise', '~> 3.1.1'
 gem 'jbuilder', '~> 1.5.2'

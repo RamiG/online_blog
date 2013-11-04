@@ -9,7 +9,7 @@
     = f.text_area :content, placeholder: "Enter your post...", id: "content_field"
 
     = f.label :category_id
-    = f.select :category_id, Category.all.collect { |c| [("  -  " if !c.parent_id.nil?).to_s + c.name, c.id] }  , include_blank: true
+    = f.select :category_id, Category.all.collect { |c| [("  -  " if !c.parent_id.nil?).to_s + c.name, c.id] }  , include_blank: true, id: "select_field"
 
     = f.label :tags
     = f.text_field :tag_list
